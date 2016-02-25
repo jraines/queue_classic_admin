@@ -1,5 +1,3 @@
-require 'will_paginate'
-
 module QueueClassicAdmin
   module JobCommon
     module ClassMethods
@@ -48,7 +46,6 @@ module QueueClassicAdmin
       receiver.extend ClassMethods
       receiver.send :include, InstanceMethods
       receiver.attr_accessible :q_name unless defined?(ActionController::StrongParameters)
-      receiver.per_page = 50 if receiver.respond_to?(:per_page)
     end
   end
 end
