@@ -4,7 +4,7 @@ module QueueClassicAdmin
   class QueueClassicScheduledJobsController < ApplicationController
     before_action :filter_jobs, only: %i(index destroy_all)
     def index
-      @queue_classic_jobs = @queue_classic_jobs.paginate(page: params[:page])
+      @queue_classic_jobs = @queue_classic_jobs.page(params[:page] || 0)
     end
 
     def destroy

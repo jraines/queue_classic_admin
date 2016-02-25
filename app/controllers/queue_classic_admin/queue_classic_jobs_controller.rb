@@ -5,7 +5,7 @@ module QueueClassicAdmin
     before_action :get_job, only: [:destroy, :unlock, :custom, :show]
     before_action :filter_jobs, only: [:index, :destroy_all, :unlock_all, :bulk_custom_action]
     def index
-      @queue_classic_jobs = @queue_classic_jobs.paginate(page: params[:page])
+      @queue_classic_jobs = @queue_classic_jobs.page(params[:page] || 0)
     end
 
     def destroy
